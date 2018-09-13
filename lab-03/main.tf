@@ -8,13 +8,13 @@ resource "aws_s3_bucket" "bcrbucket-1" {
 }
 
 provider "aws" {
-  region = "ca-central-1"
+  region = "us-east-1"
 
 }
 
 # Change the aws_instance we declared earlier to now include "depends_on"
 resource "aws_instance" "ec2-tf" {
-  ami           = "ami-011f5be9934c38463"
+  ami           = "ami-6871a115"
   instance_type = "t2.micro"
 
   # Tells Terraform that this EC2 instance must be created only after the

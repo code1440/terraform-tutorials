@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "ca-central-1"
+  region = "us-east-1"
 
 }
 
@@ -12,10 +12,10 @@ data "aws_ami" "rhel" {
 }
 
 resource "aws_instance" "web" {
-  ami           = "ami-49f0762d"
+  ami           = "ami-6871a115"
   instance_type = "t2.micro"
   security_groups = [
-        "ansible-node"
+        "sep06"
     ]
 
   tags {
