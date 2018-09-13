@@ -12,3 +12,9 @@
     - shell: rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key
     - yum: pkg=jenkins state=installed
     - shell : "service jenkins restart"
+    - shell: sudo wget -O /tmp https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    - shell: sudo yum install epel-release-latest-7.noarch.rpm
+    - shell: sudo yum install ansible -y
+    - shell: sudo yum install python-pip
+    - shell: sudo pip install boto
+    - shell: sudo pip install boto3
