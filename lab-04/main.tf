@@ -1,12 +1,12 @@
 provider "aws" {
-  region = "ca-central-1"
+  region = "us-east-2"
 
 }
 
 resource "aws_security_group" "wordpress_rule" {
   name        = "allow_all"
   description = "Allow all inbound traffic"
-  vpc_id      = "vpc-20940448"
+  vpc_id      = "vpc-3715295f"
 
   ingress {
     from_port   = 0
@@ -24,7 +24,7 @@ resource "aws_security_group" "wordpress_rule" {
   }
 }
 resource "aws_instance" "wordpress_terraform" {
-  ami           = "ami-011f5be9934c38463"
+  ami           = "ami-0be60474e95aea8a5"
   instance_type = "t2.micro"
   vpc_security_group_ids = [
         "${aws_security_group.wordpress_rule.id}"
