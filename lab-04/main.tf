@@ -1,12 +1,12 @@
 provider "aws" {
-  region = "us-east-2"
+  region = "us-east-1"
 
 }
 
-resource "aws_security_group" "wordpress_rule" {
+resource "aws_security_group" "jenkins_wp_rule" {
   name        = "allow_all"
   description = "Allow all inbound traffic"
-  vpc_id      = "vpc-3715295f"
+  vpc_id      = "vpc-04186de44db3095fa"
 
   ingress {
     from_port   = 0
@@ -24,12 +24,12 @@ resource "aws_security_group" "wordpress_rule" {
   }
 }
 resource "aws_instance" "wordpress_terraform" {
-  ami           = "ami-0be60474e95aea8a5"
+  ami           = "ami-04169656fea786776"
   instance_type = "t2.micro"
   vpc_security_group_ids = [
-        "${aws_security_group.wordpress_rule.id}"
+        "${aws_security_group.jenkins_wp_rule.id}"
     ]
-  key_name = "ansible"
+  key_name = "fullstack"
   tags {
     Name = "wordpress_terraform"
   }
@@ -40,11 +40,11 @@ resource "aws_instance" "wordpress_terraform" {
     connection {
     type     = "ssh"
     user     = "ubuntu"
-    private_key  = "${file("~/ansible.pem")}"
+    private_key  = "${file("~/Downloads/fullstack.pem")}"
   }
   }
   
    provisioner "local-exec" {
-    command = "ansible-playbook -i ${aws_instance.wordpress_terraform.public_ip}, install-wordpress.yml"
+    command = "ansible-playbook -i ${aws_instance.wordpress_terraform.public_ip}, install-wordpress.yml -b"
   }
 }
