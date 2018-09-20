@@ -1,4 +1,5 @@
 - name: Install stuff into ec2 hosts
+  host: all
   roles:
     - server
     - php
