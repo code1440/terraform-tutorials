@@ -1,7 +1,7 @@
 - name: Install stuff into ec2 hosts
-  host: all
-  roles:
-    - server
-    - php
-    - mysql
-    - wordpress
+    host: all
+    roles:
+      - server
+      - php
+      - mysql
+      - wordpress
