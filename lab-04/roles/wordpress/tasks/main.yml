@@ -16,7 +16,7 @@
     dest=/etc/apache2/sites-enabled/000-default.conf 
     regexp="(.)+DocumentRoot /var/www/html"
     line="DocumentRoot /var/www/wordpress"
-  become: yes
+
 
 - name: Copy sample config file
   command: mv /var/www/wordpress/wp-config-sample.php /var/www/wordpress/wp-config.php creates=/var/www/wordpress/wp-config.php
