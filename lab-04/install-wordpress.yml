@@ -1,5 +1,5 @@
 - name: Install stuff into ec2 hosts
-  hosts: 34.232.65.207
+  hosts: ec2-34-232-65-207.compute-1.amazonaws.com
   vars:
     ansible_ssh_user: ubuntu
     ansible_ssh_private_key_file: ~/ansible.pem
